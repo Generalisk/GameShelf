@@ -16,6 +16,12 @@
 </div>
 
 <div align="center">
+
+  [![Windows](https://github.com/Generalisk/GameShelf/actions/workflows/build-windows.yml/badge.svg)](https://github.com/Generalisk/GameShelf/actions/workflows/build-windows.yml)
+  [![Linux](https://github.com/Generalisk/GameShelf/actions/workflows/build-linux.yml/badge.svg)](https://github.com/Generalisk/GameShelf/actions/workflows/build-linux.yml)
+</div>
+
+<div align="center">
   
   # GameShelf
 </div>
