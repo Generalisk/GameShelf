@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<!--Project Info-->
+	<PropertyGroup>
+		<AssemblyName>GameShelf</AssemblyName>
+		<RootNamespace>GameShelf</RootNamespace>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
+
+	<!--Output Paths-->
+	<PropertyGroup>
+		<OutputPath>$(SolutionDir)\bin\</OutputPath>
+		<!--<IntermediateOutputPath>$(SolutionDir)\obj\</IntermediateOutputPath>-->
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
+		<!--<SelfContained>true</SelfContained>-->
+	</PropertyGroup>
+
+	<!--Debug Properties-->
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<DebugType>embedded</DebugType>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<!--Release Properties-->
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	
+	<!--Check if no RuntimeIdentifier has been specified-->
+	<!--This is so that by default, .NET will assume your building for your device-->
+	<Choose>
+		<When Condition="'$(RuntimeIdentifier)'==''">
+			<PropertyGroup>
+				<DefaultRuntime>true</DefaultRuntime>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<DefaultRuntime>false</DefaultRuntime>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+
+	<!--Windows Properties-->
+	<PropertyGroup Condition="$(RuntimeIdentifier.StartsWith('win'))Or($(DefaultRuntime)And$([MSBuild]::IsOSPlatform('Windows')))">
+		<DefineConstants>$(DefineConstants);PLATFORM_WINDOWS</DefineConstants>
+	</PropertyGroup>
+
+	<!--MacOS/OSX Properties-->
+	<PropertyGroup Condition="$(RuntimeIdentifier.StartsWith('osx'))Or($(DefaultRuntime)And$([MSBuild]::IsOSPlatform('OSX')))">
+		<DefineConstants>$(DefineConstants);PLATFORM_OSX</DefineConstants>
+	</PropertyGroup>
+
+	<!--Linux Properties-->
+	<PropertyGroup Condition="$(RuntimeIdentifier.StartsWith('linux'))Or($(DefaultRuntime)And$([MSBuild]::IsOSPlatform('Linux')))">
+		<DefineConstants>$(DefineConstants);PLATFORM_LINUX</DefineConstants>
+	</PropertyGroup>
+
+	<!--NuGet Packages-->
+	<ItemGroup>
+		<PackageReference Include="GameCollector" Version="4.4.0.1" />
+		<PackageReference Include="GameCollector.StoreHandlers.RobotCache" Version="4.4.0.1" />
+		<PackageReference Include="ImGui.NET" Version="1.91.6.1" />
+		<PackageReference Include="Magick.NET-Q8-AnyCPU" Version="14.10.1" />
+		<PackageReference Include="Raylib-cs" Version="7.0.2" />
+		<PackageReference Include="rlImGui-cs" Version="3.2.0" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
+		<PackageReference Include="System.Drawing.Common" Version="10.0.1" />
+	</ItemGroup>
+
+	<!--Copy Resources to Output Directory-->
+	<ItemGroup>
+		<Content Include="Resources\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+</Project>
