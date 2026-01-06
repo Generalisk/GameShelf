@@ -24,12 +24,14 @@
 
 	<!--Debug Properties-->
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<OutputPath>$(OutputPath)\Debug\</OutputPath>
 		<DebugType>embedded</DebugType>
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 
 	<!--Release Properties-->
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<OutputPath>$(OutputPath)\Release\</OutputPath>
 		<DebugType>none</DebugType>
 	</PropertyGroup>
 	
