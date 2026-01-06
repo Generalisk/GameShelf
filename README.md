@@ -84,7 +84,9 @@ Feel free to correct me or add any that i'm missing-->
 ## BUILD INSTRUCTIONS
 To build the project, simply go to the [scripts](scripts) folder & run the appropriate Batch/Shell scripts.
 
-You can build in two modes: Debug & Release. The script will build the project for all supported platforms.
+You can build in two modes: Debug & Release. You can use the main script to build the project for all supported platforms, or use platform-specific scripts to build them individually.
+
+Additionally, there is also a test script, which will create a debug build and then automatically launch the program once it's finished.
 <!--I haven't tested the Linux scripts yet XD-->
 ### Using Visual Studio (Windows only)
 In Visual Studio, go to the top menu & open the `Build` menu. There, you can pick on whether to build the solution or just the current project.
