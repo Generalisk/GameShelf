@@ -22,9 +22,28 @@ internal class MainWindow : StaticWindow
 
             ImGui.Text(string.Format("Source: {0}", Enum.GetName(SelectedGame.Source)));
 
-            if (!string.IsNullOrWhiteSpace(SelectedGame.LaunchPath))
+            if (!string.IsNullOrWhiteSpace(SelectedGame.LaunchURL))
             {
                 if (ImGui.Button("Play!"))
+                {
+                    var process = new Process();
+                    process.StartInfo = new ProcessStartInfo()
+                    {
+#if PLATFORM_WINDOWS
+                        FileName = "cmd.exe",
+                        Arguments = "/C start " + SelectedGame.LaunchURL,
+#elif PLATFORM_LINUX
+                        FileName = "/bin/bash",
+                        Arguments = "xdg-open " + SelectedGame.LaunchURL,
+#endif
+                    };
+                    process.Start();
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(SelectedGame.LaunchPath))
+            {
+                if (ImGui.Button("Play Locally!"))
                 {
                     var process = new Process();
                     process.StartInfo = new ProcessStartInfo()

@@ -23,6 +23,7 @@ internal class GameInfo : IDisposable
     public Texture2D? CoverArt { get => coverArt; }
     private Texture2D? coverArt = null;
 
+    public string LaunchURL { get; init; } = "";
     public string LaunchPath { get; init; } = "";
     public string LaunchArgs { get; init; } = "";
 

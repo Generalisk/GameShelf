@@ -98,6 +98,7 @@ internal class SteamLibrary : Library<SteamGame, SteamHandler>
                 Source = Source,
                 IconPath = icon,
                 CoverArtPath = coverArt,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };

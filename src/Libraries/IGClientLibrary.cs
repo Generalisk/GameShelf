@@ -89,6 +89,7 @@ internal class IGClientLibrary : Library<IGClientGame, IGClientHandler>
                 Name = game.GameName,
                 Source = Source,
                 IconPath = icon,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };

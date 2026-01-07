@@ -80,6 +80,7 @@ internal class XboxLibrary : Library<XboxGame, XboxHandler>
                 Name = game.GameName,
                 Source = Source,
                 IconPath = icon,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };

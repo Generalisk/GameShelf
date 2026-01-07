@@ -89,6 +89,7 @@ internal class HumbleLibrary : Library<HumbleGame, HumbleHandler>
                 Name = game.GameName,
                 Source = Source,
                 IconPath = icon,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };

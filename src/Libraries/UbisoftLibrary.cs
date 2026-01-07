@@ -89,6 +89,7 @@ internal class UbisoftLibrary : Library<UbisoftGame, UbisoftHandler>
                 Name = game.GameName,
                 Source = Source,
                 IconPath = icon,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };

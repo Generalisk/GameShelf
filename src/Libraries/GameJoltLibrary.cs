@@ -89,6 +89,7 @@ internal class GameJoltLibrary : Library<GameJoltGame, GameJoltHandler>
                 Name = game.GameName,
                 Source = Source,
                 IconPath = icon,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };

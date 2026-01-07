@@ -89,6 +89,7 @@ internal class BattleNetLibrary : Library<BattleNetGame, BattleNetHandler>
                 Name = game.GameName,
                 Source = Source,
                 IconPath = icon,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };

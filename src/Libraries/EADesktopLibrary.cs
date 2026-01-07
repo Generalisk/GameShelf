@@ -88,6 +88,7 @@ internal class EADesktopLibrary : Library<EADesktopGame, EADesktopHandler>
                 Name = game.GameName,
                 Source = Source,
                 IconPath = icon,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };

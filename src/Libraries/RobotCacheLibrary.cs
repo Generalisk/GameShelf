@@ -87,6 +87,7 @@ internal class RobotCacheLibrary : Library<RobotCacheGame, RobotCacheHandler>
                 Name = game.GameName,
                 Source = Source,
                 IconPath = icon,
+                LaunchURL = game.LaunchUrl,
                 LaunchPath = launchPath,
                 LaunchArgs = game.LaunchArgs,
             };
