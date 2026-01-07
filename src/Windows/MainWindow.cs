@@ -30,15 +30,11 @@ internal class MainWindow : StaticWindow
             if (!string.IsNullOrWhiteSpace(SelectedGame.LaunchPath))
             {
                 if (ImGui.Button("Play Locally!"))
-                {
-                    var process = new Process();
-                    process.StartInfo = new ProcessStartInfo()
+                    Process.Start(new ProcessStartInfo()
                     {
                         FileName = SelectedGame.LaunchPath,
                         Arguments = SelectedGame.LaunchArgs,
-                    };
-                    process.Start();
-                }
+                    });
             }
         }
         else
