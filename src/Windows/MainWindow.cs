@@ -23,19 +23,23 @@ internal class MainWindow : StaticWindow
 
             ImGui.Text(string.Format("Source: {0}", Enum.GetName(SelectedGame.Source)));
 
-            if (!string.IsNullOrWhiteSpace(SelectedGame.LaunchURL))
+            bool showPlayButton = !string.IsNullOrWhiteSpace(SelectedGame.LaunchURL);
+            bool showPlayButtonLocal = !string.IsNullOrWhiteSpace(SelectedGame.LaunchPath);
+
+            if (showPlayButton)
                 if (ImGui.Button("Play!"))
                     URL.Open(SelectedGame.LaunchURL);
 
-            if (!string.IsNullOrWhiteSpace(SelectedGame.LaunchPath))
-            {
+            if (showPlayButton && showPlayButtonLocal)
+                ImGui.SameLine();
+
+            if (showPlayButtonLocal)
                 if (ImGui.Button("Play Locally!"))
                     Process.Start(new ProcessStartInfo()
                     {
                         FileName = SelectedGame.LaunchPath,
                         Arguments = SelectedGame.LaunchArgs,
                     });
-            }
         }
         else
         {
