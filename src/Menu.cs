@@ -1,5 +1,5 @@
-﻿using ImGuiNET;
-using System.Diagnostics;
+﻿using GameShelf.Utilities;
+using ImGuiNET;
 
 namespace GameShelf;
 
@@ -25,38 +25,12 @@ internal static class Menu
             if (ImGui.BeginMenu("Help"))
             {
                 if (ImGui.MenuItem("Report Issue"))
-                {
-                    var process = new Process();
-                    process.StartInfo = new ProcessStartInfo()
-                    {
-#if PLATFORM_WINDOWS
-                        FileName = "cmd.exe",
-                        Arguments = "/C start https://github.com/Generalisk/GameShelf/issues/new",
-#elif PLATFORM_LINUX
-                        FileName = "/bin/bash",
-                        Arguments = "xdg-open https://github.com/Generalisk/GameShelf/issues/new",
-#endif
-                    };
-                    process.Start();
-                }
+                    URL.Open("https://github.com/Generalisk/GameShelf/issues/new");
 
                 ImGui.Separator();
 
                 if (ImGui.MenuItem("Source Code"))
-                {
-                    var process = new Process();
-                    process.StartInfo = new ProcessStartInfo()
-                    {
-#if PLATFORM_WINDOWS
-                        FileName = "cmd.exe",
-                        Arguments = "/C start https://github.com/Generalisk/GameShelf",
-#elif PLATFORM_LINUX
-                        FileName = "/bin/bash",
-                        Arguments = "xdg-open https://github.com/Generalisk/GameShelf",
-#endif
-                    };
-                    process.Start();
-                }
+                    URL.Open("https://github.com/Generalisk/GameShelf");
 
                 ImGui.EndMenu();
             }
