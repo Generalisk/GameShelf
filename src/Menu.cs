@@ -1,4 +1,5 @@
 ﻿using ImGuiNET;
+using System.Diagnostics;
 
 namespace GameShelf;
 
@@ -17,6 +18,27 @@ internal static class Menu
 
                 if (ImGui.MenuItem("Quit"))
                     Close = true;
+
+                ImGui.EndMenu();
+            }
+
+            if (ImGui.BeginMenu("Help"))
+            {
+                if (ImGui.MenuItem("Source Code"))
+                {
+                    var process = new Process();
+                    process.StartInfo = new ProcessStartInfo()
+                    {
+#if PLATFORM_WINDOWS
+                        FileName = "cmd.exe",
+                        Arguments = "/C start https://github.com/Generalisk/GameShelf",
+#elif PLATFORM_LINUX
+                        FileName = "/bin/bash",
+                        Arguments = "xdg-open https://github.com/Generalisk/GameShelf",
+#endif
+                    };
+                    process.Start();
+                }
 
                 ImGui.EndMenu();
             }
