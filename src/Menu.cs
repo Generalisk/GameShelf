@@ -24,6 +24,24 @@ internal static class Menu
 
             if (ImGui.BeginMenu("Help"))
             {
+                if (ImGui.MenuItem("Report Issue"))
+                {
+                    var process = new Process();
+                    process.StartInfo = new ProcessStartInfo()
+                    {
+#if PLATFORM_WINDOWS
+                        FileName = "cmd.exe",
+                        Arguments = "/C start https://github.com/Generalisk/GameShelf/issues/new",
+#elif PLATFORM_LINUX
+                        FileName = "/bin/bash",
+                        Arguments = "xdg-open https://github.com/Generalisk/GameShelf/issues/new",
+#endif
+                    };
+                    process.Start();
+                }
+
+                ImGui.Separator();
+
                 if (ImGui.MenuItem("Source Code"))
                 {
                     var process = new Process();
