@@ -74,6 +74,14 @@ internal class EADesktopLibrary : StoreLibrary<EADesktopGame, EADesktopHandler>
         var games = GetAll();
         foreach (var game in games)
         {
+            if (!game.IsInstalled)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("{0} is not installed, skipping...", game.GameName);
+                Console.ResetColor();
+                continue;
+            }
+
             var icon = "";
             var launchPath = "";
 

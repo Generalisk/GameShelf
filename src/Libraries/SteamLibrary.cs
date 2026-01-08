@@ -79,6 +79,14 @@ internal class SteamLibrary : StoreLibrary<SteamGame, SteamHandler>
         var games = GetAll();
         foreach (var game in games)
         {
+            if (!game.IsInstalled)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("{0} is not installed, skipping...", game.GameName);
+                Console.ResetColor();
+                continue;
+            }
+
             var icon = "";
             var coverArt = string.Format(CoverArtPath, steamPath, game.AppId.Value);
             var launchPath = "";
