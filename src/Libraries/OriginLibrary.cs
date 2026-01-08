@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class OriginLibrary : Library<OriginGame, OriginHandler>
+internal class OriginLibrary : StoreLibrary<OriginGame, OriginHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Origin;
 

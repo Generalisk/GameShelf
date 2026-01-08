@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class IGClientLibrary : Library<IGClientGame, IGClientHandler>
+internal class IGClientLibrary : StoreLibrary<IGClientGame, IGClientHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.IGClient;
 

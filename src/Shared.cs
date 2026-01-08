@@ -10,6 +10,11 @@ namespace GameShelf;
 
 internal static class Shared
 {
+    public static string SavePath
+    {
+        get => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/GameShelf";
+    }
+
     public static GameInfo[] Games { get => games.ToArray(); }
     internal static List<GameInfo> games = new List<GameInfo>();
     public static GameInfo? SelectedGame { get; set; } = null;
@@ -26,7 +31,7 @@ internal static class Shared
 
     public static void RefreshAll()
     {
-        // TODO: Add Local Library
+        new LocalLibrary().Refresh();
 
         new SteamLibrary().Refresh();
         new ItchLibrary().Refresh();

@@ -5,7 +5,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class XboxLibrary : Library<XboxGame, XboxHandler>
+internal class XboxLibrary : StoreLibrary<XboxGame, XboxHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Xbox;
 

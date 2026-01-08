@@ -5,7 +5,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class SteamLibrary : Library<SteamGame, SteamHandler>
+internal class SteamLibrary : StoreLibrary<SteamGame, SteamHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Steam;
 

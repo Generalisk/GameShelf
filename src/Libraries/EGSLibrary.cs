@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class EGSLibrary : Library<EGSGame, EGSHandler>
+internal class EGSLibrary : StoreLibrary<EGSGame, EGSHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.EGS;
 

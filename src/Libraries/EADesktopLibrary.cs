@@ -9,7 +9,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class EADesktopLibrary : Library<EADesktopGame, EADesktopHandler>
+internal class EADesktopLibrary : StoreLibrary<EADesktopGame, EADesktopHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.EADesktop;
 

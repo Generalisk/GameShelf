@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class HumbleLibrary : Library<HumbleGame, HumbleHandler>
+internal class HumbleLibrary : StoreLibrary<HumbleGame, HumbleHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Humble;
 

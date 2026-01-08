@@ -1,4 +1,5 @@
 ﻿using GameShelf;
+using GameShelf.Libraries;
 using GameShelf.Windows;
 using ImGuiNET;
 using Raylib_cs;
@@ -90,6 +91,8 @@ Shared.GameListWindow.Dispose();
 
 rlImGui.Shutdown();
 Raylib.CloseWindow();
+
+new LocalLibrary().Save();
 
 while (Games.Length > 0)
     Games[0].Dispose();

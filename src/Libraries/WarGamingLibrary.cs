@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class WarGamingLibrary : Library<WargamingNetGame, WargamingNetHandler>
+internal class WarGamingLibrary : StoreLibrary<WargamingNetGame, WargamingNetHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.WarGaming;
 

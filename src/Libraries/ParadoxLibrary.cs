@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class ParadoxLibrary : Library<ParadoxGame, ParadoxHandler>
+internal class ParadoxLibrary : StoreLibrary<ParadoxGame, ParadoxHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Paradox;
 

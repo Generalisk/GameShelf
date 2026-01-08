@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class RiotLibrary : Library<RiotGame, RiotHandler>
+internal class RiotLibrary : StoreLibrary<RiotGame, RiotHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Riot;
 

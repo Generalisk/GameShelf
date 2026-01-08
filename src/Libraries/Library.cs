@@ -1,21 +1,13 @@
-﻿using GameFinder.Common;
+﻿namespace GameShelf.Libraries;
 
-namespace GameShelf.Libraries;
-
-internal abstract class Library<TGame, THandler>
-    where TGame : GameData where THandler : AHandler
+// TODO: Overhaul Library System
+internal abstract class Library
 {
     protected abstract LibrarySource Source { get; }
 
-    protected THandler handler;
-
-    public Library() => handler = GetHandler();
-
-    protected abstract THandler GetHandler();
-
-    public abstract TGame? Get(object id);
-    public abstract TGame[] GetAll();
     public abstract void Refresh();
+    public abstract void Load();
+    public abstract void Save();
 
     public void Clear()
     {

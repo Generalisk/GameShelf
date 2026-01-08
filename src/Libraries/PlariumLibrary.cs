@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class PlariumLibrary : Library<PlariumGame, PlariumHandler>
+internal class PlariumLibrary : StoreLibrary<PlariumGame, PlariumHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Plarium;
 

@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class BigFishLibrary : Library<BigFishGame, BigFishHandler>
+internal class BigFishLibrary : StoreLibrary<BigFishGame, BigFishHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.BigFish;
 

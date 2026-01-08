@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class RobotCacheLibrary : Library<RobotCacheGame, RobotCacheHandler>
+internal class RobotCacheLibrary : StoreLibrary<RobotCacheGame, RobotCacheHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.RobotCache;
 

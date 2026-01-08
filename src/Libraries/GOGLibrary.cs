@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class GOGLibrary : Library<GOGGame, GOGHandler>
+internal class GOGLibrary : StoreLibrary<GOGGame, GOGHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.GOG;
 

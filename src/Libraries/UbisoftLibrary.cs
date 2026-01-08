@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class UbisoftLibrary : Library<UbisoftGame, UbisoftHandler>
+internal class UbisoftLibrary : StoreLibrary<UbisoftGame, UbisoftHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Ubisoft;
 

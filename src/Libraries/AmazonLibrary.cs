@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class AmazonLibrary : Library<AmazonGame, AmazonHandler>
+internal class AmazonLibrary : StoreLibrary<AmazonGame, AmazonHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Amazon;
 

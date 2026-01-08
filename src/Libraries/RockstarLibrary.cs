@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class RockstarLibrary : Library<RockstarGame, RockstarHandler>
+internal class RockstarLibrary : StoreLibrary<RockstarGame, RockstarHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Rockstar;
 

@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class OculusLibrary : Library<OculusGame, OculusHandler>
+internal class OculusLibrary : StoreLibrary<OculusGame, OculusHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Oculus;
 

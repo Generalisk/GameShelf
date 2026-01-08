@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class ItchLibrary : Library<ItchGame, ItchHandler>
+internal class ItchLibrary : StoreLibrary<ItchGame, ItchHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Itch;
 

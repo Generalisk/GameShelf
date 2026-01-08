@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class LegacyLibrary : Library<LegacyGame, LegacyHandler>
+internal class LegacyLibrary : StoreLibrary<LegacyGame, LegacyHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Legacy;
 

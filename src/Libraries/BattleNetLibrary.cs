@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class BattleNetLibrary : Library<BattleNetGame, BattleNetHandler>
+internal class BattleNetLibrary : StoreLibrary<BattleNetGame, BattleNetHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.BattleNet;
 

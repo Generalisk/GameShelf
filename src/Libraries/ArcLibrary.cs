@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class ArcLibrary : Library<ArcGame, ArcHandler>
+internal class ArcLibrary : StoreLibrary<ArcGame, ArcHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.Arc;
 

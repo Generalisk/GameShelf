@@ -4,7 +4,7 @@ using NexusMods.Paths;
 
 namespace GameShelf.Libraries;
 
-internal class GameJoltLibrary : Library<GameJoltGame, GameJoltHandler>
+internal class GameJoltLibrary : StoreLibrary<GameJoltGame, GameJoltHandler>
 {
     protected override LibrarySource Source { get; } = LibrarySource.GameJolt;
 
