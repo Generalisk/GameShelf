@@ -73,7 +73,7 @@ internal static class Shared
         {
             Raylib.UnloadTexture(MissingIcon);
 
-            ImageTools.LoadTexture("Resources/MissingIcon.png", 20, 20);
+            MissingIcon = ImageTools.LoadTexture("Resources/MissingIcon.png", 20, 20);
         });
     }
 
