@@ -1,8 +1,7 @@
 ﻿using GameShelf.Libraries;
+using GameShelf.Utilities;
 using ImageMagick;
 using Raylib_cs;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Processing;
 #if PLATFORM_WINDOWS
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -83,11 +82,8 @@ internal class GameInfo : IDisposable
                     break;
 #endif
                 default:
-                    var img = SixLabors.ImageSharp.Image.Load(IconPath);
-                    img.Mutate(x => x.Resize(20, 20));
-                    img.SaveAsPng("temp.png");
-                    img.Dispose();
-                    break;
+                    icon = ImageTools.LoadTexture(IconPath, 20, 20);
+                    return;
             }
 
             icon = Raylib.LoadTexture("temp.png");
@@ -114,20 +110,11 @@ internal class GameInfo : IDisposable
             if (CoverArt != null)
                 UnloadCoverArt();
 
-            var img = SixLabors.ImageSharp.Image.Load(CoverArtPath);
-
             int windowWidth = Raylib.GetRenderWidth() - Convert.ToInt32(Raylib.GetRenderWidth() / 4.5f);
             int columns = windowWidth / 200;
             int newWidth = Convert.ToInt32((windowWidth - (columns * 18)) / columns);
-            float scale = (1f / img.Width) * newWidth;
-            int newHeight = Convert.ToInt32(img.Height * scale);
 
-            img.Mutate(x => x.Resize(newWidth, newHeight));
-            img.SaveAsJpeg("temp.jpg");
-            img.Dispose();
-
-            coverArt = Raylib.LoadTexture("temp.jpg");
-            File.Delete("temp.jpg");
+            coverArt = ImageTools.LoadTexture(CoverArtPath, newWidth);
         });
     }
 

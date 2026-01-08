@@ -1,10 +1,9 @@
 ﻿global using static GameShelf.Shared;
 
 using GameShelf.Libraries;
+using GameShelf.Utilities;
 using GameShelf.Windows;
 using Raylib_cs;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Processing;
 
 namespace GameShelf;
 
@@ -74,13 +73,7 @@ internal static class Shared
         {
             Raylib.UnloadTexture(MissingIcon);
 
-            var img = SixLabors.ImageSharp.Image.Load("Resources/MissingIcon.png");
-            img.Mutate(x => x.Resize(20, 20));
-            img.SaveAsPng("temp.png");
-            img.Dispose();
-
-            MissingIcon = Raylib.LoadTexture("temp.png");
-            File.Delete("temp.png");
+            ImageTools.LoadTexture("Resources/MissingIcon.png", 20, 20);
         });
     }
 
@@ -90,20 +83,11 @@ internal static class Shared
         {
             Raylib.UnloadTexture(MissingCoverArt);
 
-            var img = SixLabors.ImageSharp.Image.Load("Resources/MissingCoverArt.png");
-
             int windowWidth = Raylib.GetRenderWidth() - Convert.ToInt32(Raylib.GetRenderWidth() / 4.5f);
             int columns = windowWidth / 200;
             int newWidth = Convert.ToInt32((windowWidth - (columns * 18)) / columns);
-            float scale = (1f / img.Width) * newWidth;
-            int newHeight = Convert.ToInt32(img.Height * scale);
 
-            img.Mutate(x => x.Resize(newWidth, newHeight));
-            img.SaveAsJpeg("temp.jpg");
-            img.Dispose();
-
-            MissingCoverArt = Raylib.LoadTexture("temp.jpg");
-            File.Delete("temp.jpg");
+            MissingCoverArt = ImageTools.LoadTexture("Resources/MissingCoverArt.png", newWidth);
         });
     }
 }
