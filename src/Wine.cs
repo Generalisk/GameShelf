@@ -1,5 +1,6 @@
 ﻿// The Wine script is to help the GameCollector package run on Linux,
-// so it isn't nessecary to build the script for other platforms
+// so it isn't nessecary to build the script for other platforms.
+// -Generalisk, 30/12/25
 #if PLATFORM_LINUX
 using GameCollector.Wine;
 using NexusMods.Paths;
