@@ -22,7 +22,9 @@ Raylib.MaximizeWindow();
 
 rlImGui.Setup();
 
-Shared.MainWindow = new MainWindow();
+Shared.HomeWindow = new HomeWindow();
+Shared.GameWindow = new GameWindow();
+Shared.GameInfoWindow = new GameInfoWindow();
 Shared.GameListWindow = new GameListWindow();
 
 // Main Loop
@@ -66,15 +68,44 @@ while (!Raylib.WindowShouldClose() && !Close)
     x += windowWidth;
     width -= x;
 
-    if (ImGui.Begin(Shared.MainWindow.Title, Shared.MainWindow.Flags))
+    if (SelectedGame == null)
     {
-        ImGui.SetWindowPos(new Vector2(x, y));
-        ImGui.SetWindowSize(new Vector2(width, height));
+        if (ImGui.Begin(Shared.HomeWindow.Title, Shared.HomeWindow.Flags))
+        {
+            ImGui.SetWindowPos(new Vector2(x, y));
+            ImGui.SetWindowSize(new Vector2(width, height));
 
-        Shared.MainWindow.width = width;
-        Shared.MainWindow.Draw();
+            Shared.HomeWindow.width = width;
+            Shared.HomeWindow.Draw();
+        }
+        ImGui.End();
     }
-    ImGui.End();
+    else
+    {
+        var coverArt = SelectedGame.CoverArt != null ? SelectedGame.CoverArt.Value : MissingCoverArt;
+
+        var infoWidth = coverArt.Width + 18;
+
+        if (ImGui.Begin(Shared.GameInfoWindow.Title, Shared.GameInfoWindow.Flags))
+        {
+            ImGui.SetWindowPos(new Vector2((x + width) - infoWidth, y));
+            ImGui.SetWindowSize(new Vector2(infoWidth, height));
+
+            Shared.GameInfoWindow.Draw();
+        }
+        ImGui.End();
+
+        width -= infoWidth;
+
+        if (ImGui.Begin(Shared.GameWindow.Title, Shared.GameWindow.Flags))
+        {
+            ImGui.SetWindowPos(new Vector2(x, y));
+            ImGui.SetWindowSize(new Vector2(width, height));
+
+            Shared.GameWindow.Draw();
+        }
+        ImGui.End();
+    }
 
     rlImGui.End();
 
@@ -86,7 +117,9 @@ while (!Raylib.WindowShouldClose() && !Close)
 }
 
 // De-initializion: unload everything!
-Shared.MainWindow.Dispose();
+Shared.HomeWindow.Dispose();
+Shared.GameWindow.Dispose();
+Shared.GameInfoWindow.Dispose();
 Shared.GameListWindow.Dispose();
 
 rlImGui.Shutdown();

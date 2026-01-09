@@ -20,8 +20,10 @@ internal static class Shared
 
     public static Window[] Windows { get => windows.ToArray(); }
     internal static List<Window> windows = new List<Window>();
+    internal static HomeWindow HomeWindow { get; set; }
+    internal static GameWindow GameWindow { get; set; }
+    internal static GameInfoWindow GameInfoWindow { get; set; }
     internal static GameListWindow GameListWindow { get; set; }
-    internal static MainWindow MainWindow { get; set; }
 
     public static Texture2D MissingIcon { get; internal set; }
     public static Texture2D MissingCoverArt { get; internal set; }
