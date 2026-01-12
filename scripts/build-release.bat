@@ -1,4 +1,4 @@
 @echo off
-dotnet publish "../src" -o "./../build/release/windows" --os win
-dotnet publish "../src" -o "./../build/release/linux" --os linux
+dotnet build "../src" -c release -o "./../build/release/windows" --os win
+dotnet build "../src" -c release -o "./../build/release/linux" --os linux
 pause
