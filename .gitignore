@@ -400,5 +400,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# GameShelf Build Directory
+# GameShelf Build Directories
 /[Bb]uild/
+/[Pp]ublish/
