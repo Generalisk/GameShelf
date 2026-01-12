@@ -1,3 +1,3 @@
 @echo off
-dotnet build "../src" -o "./../build/debug/linux" --os linux
+dotnet build "../src" -c debug -o "./../build/debug/linux" --os linux
 pause

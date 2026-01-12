@@ -1,5 +1,5 @@
 @echo off
-dotnet build "../"
+dotnet build "../" -c debug
 cd "../bin/Debug/"
 GameShelf.exe
 pause

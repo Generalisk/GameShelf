@@ -1,2 +1,2 @@
-dotnet build "../src" -o "./../build/debug/windows" --os win
+dotnet build "../src" -c debug -o "./../build/debug/windows" --os win
 read -p "Press any key to continue..." -n1 -s
