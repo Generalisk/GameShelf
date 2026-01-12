@@ -86,7 +86,7 @@ To build the project, simply go to the [scripts](scripts) folder & run the appro
 
 You can build in two modes: Debug & Release. You can use the main script to build the project for all supported platforms, or use platform-specific scripts to build them individually.
 
-Additionally, there is also a test script, which will create a debug build and then automatically launch the program once it's finished.
+Additionally, there is also a test script, which will create a debug build and then automatically launch the program once it's finished, alongside a publish script, which will create a release build with all .NET dependencies built-in alongside additional optimizations (intended for distribution).
 <!--I haven't tested the Linux scripts yet XD-->
 ### Using Visual Studio (Windows only)
 In Visual Studio, go to the top menu & open the `Build` menu. There, you can pick on whether to build the solution or just the current project.
