@@ -7,9 +7,9 @@ internal abstract class Window : IDisposable
     public abstract string Title { get; }
     public abstract ImGuiWindowFlags Flags { get; }
 
-    public virtual void Init() { }
+    protected virtual void Init() { }
     public abstract void Draw();
-    public virtual void Shutdown() { }
+    protected virtual void Shutdown() { }
 
     public Window()
     {
