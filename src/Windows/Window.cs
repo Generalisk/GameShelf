@@ -7,9 +7,21 @@ internal abstract class Window : IDisposable
     public abstract string Title { get; }
     public abstract ImGuiWindowFlags Flags { get; }
 
+    public virtual void Init() { }
     public abstract void Draw();
+    public virtual void Shutdown() { }
 
-    public Window() { windows.Add(this); }
+    public Window()
+    {
+        windows.Add(this);
 
-    public void Dispose() { windows.Remove(this); }
+        Init();
+    }
+
+    public void Dispose()
+    {
+        Shutdown();
+
+        windows.Remove(this);
+    }
 }
