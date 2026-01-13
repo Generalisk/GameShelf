@@ -71,11 +71,11 @@ GameShelf is a one-stop hub for all of your games, all put together in one launc
 <!--NGL I didn't know half of these existed until I saw them on the GameCollector supported list-->
 
 ## REQUIREMENTS
-- [.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [.NET 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 ### Windows (Alternative)
-- [Microsoft Visual Studio 2022](https://visualstudio.microsoft.com/vs/older-downloads/#visual-studio-2022-and-other-products) with the following workflows & components:
+- [Microsoft Visual Studio 2026](https://visualstudio.microsoft.com/downloads/) with the following workflows & components:
   - `.NET desktop development` workflow
-  - `.NET 8.0 Runtime`
+  - `.NET 10.0 Runtime`
   - `NuGet package manager`
   - `NuGet targets and build tasks`
 <!--I don't know all the components you'll actually need, i'm just guessing :P
