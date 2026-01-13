@@ -107,6 +107,20 @@ while (!Raylib.WindowShouldClose() && !Close)
         ImGui.End();
     }
 
+    foreach (var window in Shared.Windows)
+    {
+        if (window is StaticWindow) continue;
+
+        if (ImGui.Begin(window.Title, window.Flags))
+        {
+            //ImGui.SetWindowPos(new Vector2(x, y));
+            //ImGui.SetWindowSize(new Vector2(width, height));
+
+            window.Draw();
+        }
+        ImGui.End();
+    }
+
     rlImGui.End();
 
 #if DEBUG
