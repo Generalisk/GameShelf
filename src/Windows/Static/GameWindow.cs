@@ -2,7 +2,7 @@
 using ImGuiNET;
 using System.Diagnostics;
 
-namespace GameShelf.Windows;
+namespace GameShelf.Windows.Static;
 
 internal class GameWindow : StaticWindow
 {

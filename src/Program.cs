@@ -1,6 +1,6 @@
 ﻿using GameShelf;
 using GameShelf.Libraries;
-using GameShelf.Windows;
+using GameShelf.Windows.Static;
 using ImGuiNET;
 using Raylib_cs;
 using rlImGui_cs;

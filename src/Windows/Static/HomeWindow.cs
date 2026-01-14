@@ -1,7 +1,7 @@
 ﻿using ImGuiNET;
 using rlImGui_cs;
 
-namespace GameShelf.Windows;
+namespace GameShelf.Windows.Static;
 
 internal class HomeWindow : StaticWindow
 {

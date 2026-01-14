@@ -3,6 +3,7 @@
 using GameShelf.Libraries;
 using GameShelf.Utilities;
 using GameShelf.Windows;
+using GameShelf.Windows.Static;
 using Raylib_cs;
 
 namespace GameShelf;
