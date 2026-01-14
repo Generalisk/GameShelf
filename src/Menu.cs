@@ -1,4 +1,5 @@
 ﻿using GameShelf.Utilities;
+using GameShelf.Windows.FileSystem;
 using ImGuiNET;
 
 namespace GameShelf;
@@ -21,6 +22,16 @@ internal static class Menu
 
                 ImGui.EndMenu();
             }
+
+#if DEBUG
+            if (ImGui.BeginMenu("Debug"))
+            {
+                if (ImGui.MenuItem("Open File Browser"))
+                    new FileBrowser();
+
+                ImGui.EndMenu();
+            }
+#endif
 
             if (ImGui.BeginMenu("Help"))
             {
