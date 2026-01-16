@@ -32,8 +32,24 @@ internal class FileBrowser : Window
             SetDirectory(directory);
         ImGui.PopItemWidth();
 
-        // Draw File List
-        ImGui.BeginChild("File List", ImGui.GetWindowSize() - new Vector2(8, 128));
+        var contentsY = ImGui.GetCursorPosY();
+        var contentsHeight = ImGui.GetWindowHeight() - 128;
+
+        // Draw directory shortcuts
+        var dirShortcutsWidth = 128;
+        ImGui.BeginChild("Directory Shortcuts", new Vector2(dirShortcutsWidth, contentsHeight));
+
+        // Drives
+        var drives = DriveInfo.GetDrives();
+        foreach (var drive in drives)
+            if (ImGui.Button(drive.RootDirectory.FullName))
+                SetDirectory(drive.RootDirectory.FullName);
+
+        ImGui.EndChild();
+
+        // Draw file list
+        ImGui.SetCursorPos(new Vector2(dirShortcutsWidth, contentsY));
+        ImGui.BeginChild("File List", new Vector2(ImGui.GetWindowWidth() - (dirShortcutsWidth + 2), contentsHeight));
 
         foreach (var dir in dirs)
             if (ImGui.Button(new DirectoryInfo(dir).Name))
@@ -53,6 +69,7 @@ internal class FileBrowser : Window
 
         ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 8);
 
+        // Draw selected file info
         if (selectedFile == null)
         {
             ImGui.Text(" ");
