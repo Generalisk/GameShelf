@@ -13,6 +13,8 @@ internal class FileBrowser : Window
 
     private string directory = Directory.GetCurrentDirectory();
 
+    private string? selectedFile = null;
+
     private string[] files = { };
     private string[] dirs = { };
 
@@ -31,16 +33,55 @@ internal class FileBrowser : Window
         ImGui.PopItemWidth();
 
         // Draw File List
-        ImGui.BeginChild("File List", ImGui.GetWindowSize() - new Vector2(8, 51));
+        ImGui.BeginChild("File List", ImGui.GetWindowSize() - new Vector2(8, 128));
+
         foreach (var dir in dirs)
             if (ImGui.Button(new DirectoryInfo(dir).Name))
-                SetDirectory(dir);
+                if (selectedFile == dir)
+                    SetDirectory(dir);
+                else
+                    selectedFile = dir;
 
         foreach (var file in files)
             if (ImGui.Button(new FileInfo(file).Name))
-                Utilities.FileSystem.OpenFile(file);
+                if (selectedFile == file)
+                    Utilities.FileSystem.OpenFile(file);
+                else
+                    selectedFile = file;
 
         ImGui.EndChild();
+
+        ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 8);
+
+        if (selectedFile == null)
+        {
+            ImGui.Text(" ");
+            ImGui.Text(" ");
+
+            ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 8);
+
+            ImGui.BeginDisabled();
+            ImGui.Button("Select!");
+            ImGui.EndDisabled();
+        }
+        else
+        {
+            ImGui.Text(new FileInfo(selectedFile).Name);
+            ImGui.Text(selectedFile);
+
+            ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 8);
+
+            if (ImGui.Button("Select!"))
+                if (Directory.Exists(selectedFile))
+                    SetDirectory(selectedFile);
+                else
+                    Utilities.FileSystem.OpenFile(selectedFile);
+        }
+
+        ImGui.SameLine();
+
+        if (ImGui.Button("Cancel!"))
+            Dispose();
     }
 
     public void SetDirectory(string directory)
