@@ -16,41 +16,40 @@ internal class FileBrowser : Window
     private string[] files = { };
     private string[] dirs = { };
 
-    protected override void Init()
-    {
-        files = Directory.GetFiles(directory);
-        dirs = Directory.GetDirectories(directory);
-    }
+    protected override void Init() => SetDirectory(directory);
 
     public override void Draw()
     {
+        if (ImGui.Button("<"))
+            SetDirectory(new DirectoryInfo(directory).Parent.FullName);
+
+        ImGui.SameLine();
+
         ImGui.PushItemWidth(-1);
         if (ImGui.InputText("  Path", ref directory, uint.MaxValue, ImGuiInputTextFlags.EnterReturnsTrue))
-        {
-            if (!Directory.Exists(directory)) return;
-
-            files = Directory.GetFiles(directory);
-            dirs = Directory.GetDirectories(directory);
-        }
+            SetDirectory(directory);
         ImGui.PopItemWidth();
 
+        // Draw File List
         ImGui.BeginChild("File List", ImGui.GetWindowSize() - new Vector2(8, 51));
         foreach (var dir in dirs)
-        {
             if (ImGui.Button(new DirectoryInfo(dir).Name))
-            {
-                directory = dir;
-
-                files = Directory.GetFiles(directory);
-                dirs = Directory.GetDirectories(directory);
-            }
-        }
+                SetDirectory(dir);
 
         foreach (var file in files)
-        {
             if (ImGui.Button(new FileInfo(file).Name))
                 Utilities.FileSystem.OpenFile(file);
-        }
+
         ImGui.EndChild();
+    }
+
+    public void SetDirectory(string directory)
+    {
+        if (!Directory.Exists(directory)) return;
+
+        this.directory = directory;
+
+        files = Directory.GetFiles(directory);
+        dirs = Directory.GetDirectories(directory);
     }
 }
