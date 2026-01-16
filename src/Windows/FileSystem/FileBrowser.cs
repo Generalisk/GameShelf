@@ -1,4 +1,5 @@
 ﻿using ImGuiNET;
+using System.Numerics;
 
 namespace GameShelf.Windows.FileSystem;
 
@@ -7,6 +8,8 @@ internal class FileBrowser : Window
     public override string Title { get; } = "File Browser";
 
     public override ImGuiWindowFlags Flags { get; } = ImGuiWindowFlags.None;
+
+    public override Vector2 MinSize { get; } = new Vector2(720, 480);
 
     private string directory = Directory.GetCurrentDirectory();
 

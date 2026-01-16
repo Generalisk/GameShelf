@@ -109,15 +109,11 @@ while (!Raylib.WindowShouldClose() && !Close)
 
     foreach (var window in Shared.Windows)
     {
-        if (window is StaticWindow) continue;
+        ImGui.SetNextWindowSizeConstraints(window.MinSize, window.MaxSize);
 
         if (ImGui.Begin(window.Title, window.Flags))
-        {
-            //ImGui.SetWindowPos(new Vector2(x, y));
-            //ImGui.SetWindowSize(new Vector2(width, height));
-
             window.Draw();
-        }
+
         ImGui.End();
     }
 
