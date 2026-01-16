@@ -7,7 +7,7 @@ internal class FileBrowser : Window
 {
     public override string Title { get; } = "File Browser";
 
-    public override ImGuiWindowFlags Flags { get; } = ImGuiWindowFlags.None;
+    public override ImGuiWindowFlags Flags { get; } = ImGuiWindowFlags.NoScrollbar;
 
     public override Vector2 MinSize { get; } = new Vector2(720, 480);
 
@@ -34,6 +34,7 @@ internal class FileBrowser : Window
         }
         ImGui.PopItemWidth();
 
+        ImGui.BeginChild("File List", ImGui.GetWindowSize() - new Vector2(8, 51));
         foreach (var dir in dirs)
         {
             if (ImGui.Button(new DirectoryInfo(dir).Name))
@@ -50,5 +51,6 @@ internal class FileBrowser : Window
             if (ImGui.Button(new FileInfo(file).Name))
                 Utilities.FileSystem.OpenFile(file);
         }
+        ImGui.EndChild();
     }
 }
