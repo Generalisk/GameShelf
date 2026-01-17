@@ -18,6 +18,35 @@ internal class FileBrowser : Window
     private string[] files = { };
     private string[] dirs = { };
 
+    // System Folders
+    private string[] SystemFolders { get; } =
+    {
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads",
+        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+        Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+        Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
+        Environment.GetFolderPath(Environment.SpecialFolder.MyVideos),
+#if PLATFORM_WINDOWS
+        Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+#endif
+    };
+
+    private string[] SystemFolderNames { get; } =
+    {
+        "Home",
+        "Desktop",
+        "Downloads",
+        "Documents",
+        "Pictures",
+        "Music",
+        "Videos",
+#if PLATFORM_WINDOWS
+        "Program Files",
+#endif
+    };
+
     protected override void Init() => SetDirectory(directory);
 
     public override void Draw()
@@ -37,13 +66,22 @@ internal class FileBrowser : Window
 
         // Draw directory shortcuts
         var dirShortcutsWidth = 128;
-        ImGui.BeginChild("Directory Shortcuts", new Vector2(dirShortcutsWidth, contentsHeight));
+        ImGui.BeginChild("Directory Shortcuts", new Vector2(dirShortcutsWidth - 12, contentsHeight));
+
+        // System folders
+        if (ImGui.CollapsingHeader("System", ImGuiTreeNodeFlags.DefaultOpen))
+            for (int i = 0; i < SystemFolders.Length; i++)
+                if (ImGui.Button(SystemFolderNames[i]))
+                    SetDirectory(SystemFolders[i]);
 
         // Drives
-        var drives = DriveInfo.GetDrives();
-        foreach (var drive in drives)
-            if (ImGui.Button(drive.RootDirectory.FullName))
-                SetDirectory(drive.RootDirectory.FullName);
+        if (ImGui.CollapsingHeader("Drives", ImGuiTreeNodeFlags.DefaultOpen))
+        {
+            var drives = DriveInfo.GetDrives();
+            foreach (var drive in drives)
+                if (ImGui.Button(drive.RootDirectory.FullName))
+                    SetDirectory(drive.RootDirectory.FullName);
+        }
 
         ImGui.EndChild();
 
