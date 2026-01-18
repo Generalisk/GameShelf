@@ -31,6 +31,10 @@ internal static class Shared
 
     internal static bool Close { get; set; } = false;
 
+#if DEBUG
+    public static bool DrawFPSCounter { get; set; } = true;
+#endif
+
     public static void RefreshAll()
     {
         new LocalLibrary().Refresh();

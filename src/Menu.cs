@@ -29,6 +29,9 @@ internal static class Menu
                 if (ImGui.MenuItem("Open File Browser"))
                     new FileBrowser();
 
+                if (ImGui.MenuItem("Toggle FPS Counter"))
+                    DrawFPSCounter = !DrawFPSCounter;
+
                 ImGui.EndMenu();
             }
 #endif

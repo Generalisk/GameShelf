@@ -120,7 +120,8 @@ while (!Raylib.WindowShouldClose() && !Close)
     rlImGui.End();
 
 #if DEBUG
-    Raylib.DrawFPS(10, 10);
+    if (DrawFPSCounter)
+        Raylib.DrawFPS(10, 10);
 #endif
 
     Raylib.EndDrawing();
