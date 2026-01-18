@@ -52,7 +52,11 @@ internal class FileBrowser : Window
     public override void Draw()
     {
         if (ImGui.Button("<"))
+        {
+            var selectedFolder = directory;
             SetDirectory(new DirectoryInfo(directory).Parent.FullName);
+            selectedFile = selectedFolder;
+        }
 
         ImGui.SameLine();
 
@@ -144,6 +148,7 @@ internal class FileBrowser : Window
         if (!Directory.Exists(directory)) return;
 
         this.directory = directory;
+        selectedFile = directory;
 
         files = Directory.GetFiles(directory);
         dirs = Directory.GetDirectories(directory);
