@@ -57,7 +57,7 @@ internal class FileBrowser : Window
         ImGui.SameLine();
 
         ImGui.PushItemWidth(-1);
-        if (ImGui.InputText("  Path", ref directory, uint.MaxValue, ImGuiInputTextFlags.EnterReturnsTrue))
+        if (ImGui.InputText("  Path", ref directory, ushort.MaxValue, ImGuiInputTextFlags.EnterReturnsTrue))
             SetDirectory(directory);
         ImGui.PopItemWidth();
 
